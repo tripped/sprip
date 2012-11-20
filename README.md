@@ -24,8 +24,8 @@ Produces a neat set of files:
 
 And the files are pretty, like so:
 
-![](https://raw.github.com/mraccident/sprip/master/sample00.png) \
-![](https://raw.github.com/mraccident/sprip/master/sample01.png) \
-![](https://raw.github.com/mraccident/sprip/master/sample02.png) \
-![](https://raw.github.com/mraccident/sprip/master/sample03.png) ...
+![](https://raw.github.com/mraccident/sprip/master/samples/00.png)  
+![](https://raw.github.com/mraccident/sprip/master/samples/01.png)  
+![](https://raw.github.com/mraccident/sprip/master/samples/02.png)  
+![](https://raw.github.com/mraccident/sprip/master/samples/03.png) ...
 
