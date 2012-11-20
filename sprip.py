@@ -1,27 +1,36 @@
 import sys
 from PIL import Image
 
-if len(sys.argv) < 4:
-    print "Usage: python %s <filename> <offset> <width> <height>" % sys.argv[0]
+def readbyte(f):
+    """Read one byte as an int from a file"""
+    return ord(f.read(1))
 
-file = open(sys.argv[1])
+if len(sys.argv) < 3:
+    print "Usage: python %s <filename> <palettefile> [output]" % sys.argv[0]
+    print "  `output` should be a format string; '%03d.png' is the default."
+    exit(1)
 
-offset = int(sys.argv[2], 0)
-width = int(sys.argv[3])
-height = int(sys.argv[4])
+outformat = "%03d.png"
+if len(sys.argv) >= 4:
+    outformat = sys.argv[3]
 
-# Read raw data from the file
-file.seek(offset)
-data = file.read(width * height)
-
-# Load it as an image
-image = Image.fromstring('P', (width, height), data)
-
-# Get palette (temporarily hardcoded)
-palfile = open('quarantine/floor.img')
+# Load the palette
+palfile = open(sys.argv[2])
 palfile.seek(0xD)
 palette = palfile.read(768)
+palfile.close()
 
-image.putpalette(palette)
+# Open the main texture file
+datfile = open(sys.argv[1])
 
-image.save('output.png')
+# Read sprite count and sizes
+count = readbyte(datfile)
+sizes = [(readbyte(datfile), readbyte(datfile)) for _ in range(count)]
+
+# Read each sprite based on the sizes
+for i,size in enumerate(sizes):
+    data = datfile.read(size[0] * size[1])
+    image = Image.fromstring('P', size, data)
+    image.putpalette(palette)
+    image.save(outformat % i)
+

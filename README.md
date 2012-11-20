@@ -3,10 +3,26 @@ sprip
 
 Rips sprites from a thing for no raisin.
 
+Usage
+-----
+
+    python sprip.py <spritefile> <palettefile> [outformat]
+
 Example:
 
-    python sprip.py quarantine/pedk1.spr 0x45 24 59
+    python sprip.py quarantine/wall1.spr quarantine/floor.img sample%02d.png
 
-Produces this as output.png:
+Produces a neat set of files:
 
-![Some guy](https://raw.github.com/mraccident/sprip/master/sample.png "Spooky!")
+    $ ls
+    sample00.png
+    sample01.png
+    sample02.png
+    sample03.png
+    ...
+
+![](https://raw.github.com/mraccident/sprip/master/sample00.png)
+![](https://raw.github.com/mraccident/sprip/master/sample01.png)
+![](https://raw.github.com/mraccident/sprip/master/sample02.png)
+![](https://raw.github.com/mraccident/sprip/master/sample03.png)
+...
