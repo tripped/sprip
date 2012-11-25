@@ -32,5 +32,5 @@ for i,size in enumerate(sizes):
     data = datfile.read(size[0] * size[1])
     image = Image.fromstring('P', size, data)
     image.putpalette(palette)
-    image.save(outformat % i)
+    image.save(outformat % i, transparency=0)
 
