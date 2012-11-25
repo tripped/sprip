@@ -15,13 +15,13 @@ if len(sys.argv) >= 4:
     outformat = sys.argv[3]
 
 # Load the palette
-palfile = open(sys.argv[2])
+palfile = open(sys.argv[2], 'rb')
 palfile.seek(0xD)
 palette = palfile.read(768)
 palfile.close()
 
 # Open the main texture file
-datfile = open(sys.argv[1])
+datfile = open(sys.argv[1], 'rb')
 
 # Read sprite count and sizes
 count = readbyte(datfile)
